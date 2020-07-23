@@ -5,16 +5,46 @@ export const useTask = (selectedTodo) => {
   const [tasks, setTasks] = useState([])
 
   useEffect(() => {
-    let unsuscribe = firebase
+    let unsubscribe = firebase
       .firestore()
       .collection('tasks')
       .where('todoId', '==', '1')
 
-    unsuscribe = unsuscribe.onSnapshot((snapshot) => {
-      const newTasks = snapshot.docs.map((task) => task)
-      setTasks(newTasks)
+    unsubscribe = unsubscribe.onSnapshot((snapshot) => {
+      const newTasks = snapshot.docs.map((task) => ({
+        id: task.id,
+        ...task.data(),
+      }))
 
-      return tasks
+      setTasks(newTasks)
     })
+
+    return () => unsubscribe()
   }, [selectedTodo])
+
+  return { tasks }
+}
+
+export const useTodo = (userId) => {
+  const [todos, setTodos] = useState([])
+
+  useEffect(() => {
+    firebase
+      .firestore()
+      .collection('todos')
+      .where('userId', '==', userId)
+      .orderBy('todoId')
+      .get()
+      .then((snapshot) => {
+        const allTodos = snapshot.docs.map((todo) => ({
+          ...todo.data(),
+          docId: todo.id,
+        }))
+
+        if (JSON.stringify(allTodos) !== JSON.stringify(todos)) {
+          setTodos(allTodos)
+        }
+      })
+  }, [todos, userId])
+  return { todos, setTodos }
 }
