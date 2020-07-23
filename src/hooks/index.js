@@ -8,7 +8,7 @@ export const useTask = (selectedTodo) => {
     let unsubscribe = firebase
       .firestore()
       .collection('tasks')
-      .where('todoId', '==', '1')
+      .where('todoId', '==', selectedTodo)
 
     unsubscribe = unsubscribe.onSnapshot((snapshot) => {
       const newTasks = snapshot.docs.map((task) => ({
