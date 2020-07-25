@@ -1,6 +1,7 @@
 import React from 'react'
 import { useTask } from '../hooks'
 import Checkbox from './Checkbox'
+import { updateTaskState } from '../helpers'
 
 function Tasks() {
   const { tasks } = useTask('1')
@@ -10,8 +11,9 @@ function Tasks() {
       {tasks.map((task) => {
         return (
           <Checkbox
+            onChange={() => updateTaskState(task.id)}
             label={task.description}
-            isChecked={task.isFinished}
+            isChecked={task.finished}
             key={task.id}
           />
         )

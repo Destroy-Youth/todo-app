@@ -4,7 +4,6 @@ import { useTodo } from '../hooks'
 function Todos() {
   const { todos } = useTodo('1')
 
-  console.log(todos)
   return (
     <div>
       {todos.map((todo) => {

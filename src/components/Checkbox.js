@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import { updateTaskState } from '../helpers'
 
-const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
+const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
   border: 0;
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -12,48 +13,44 @@ const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
   position: absolute;
   white-space: nowrap;
   width: 1px;
-`;
+`
 
 const Icon = styled.svg`
   fill: none;
   stroke: white;
   stroke-width: 2px;
-`;
+`
 
 const StyledCheckbox = styled.div`
   display: inline-block;
   width: 16px;
   height: 16px;
-  background: ${(props) => (props.checked ? "salmon" : "pink")};
+  background: ${(props) => (props.checked ? 'salmon' : 'pink')};
   border-radius: 3px;
   transition: all 150ms;
 
   ${Icon} {
-    visibility: ${(props) => (props.checked ? "visible" : "hidden")};
+    visibility: ${(props) => (props.checked ? 'visible' : 'hidden')};
   }
 
   ${HiddenCheckbox}:focus + & {
     box-shadow: 0 0 0 3px pink;
   }
-`;
+`
 
 const CheckboxContainer = styled.div`
   display: inline-block;
   vertical-align: middle;
-`;
+`
 
-function Checkbox({ className, isChecked, label, ...props }) {
-  const [checked, setChecked] = useState(isChecked ? true : false);
+function Checkbox({ className, isChecked, onChange, label, ...props }) {
+  const [checked, setChecked] = useState(isChecked ? true : false)
 
   return (
     <div>
       <label>
         <CheckboxContainer className={className}>
-          <HiddenCheckbox
-            checked={checked}
-            {...props}
-            onChange={() => setChecked(!checked)}
-          />
+          <HiddenCheckbox checked={checked} {...props} onChange={onChange} />
           <StyledCheckbox checked={checked}>
             <Icon viewBox="0 0 24 24">
               <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -61,10 +58,10 @@ function Checkbox({ className, isChecked, label, ...props }) {
             </Icon>
           </StyledCheckbox>
         </CheckboxContainer>
-        <span style={{ marginLeft: "0.4rem" }}>{label}</span>
+        <span style={{ marginLeft: '0.4rem' }}>{label}</span>
       </label>
     </div>
-  );
+  )
 }
 
-export default Checkbox;
+export default Checkbox
