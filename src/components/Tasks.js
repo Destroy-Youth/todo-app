@@ -11,7 +11,7 @@ function Tasks() {
       {tasks.map((task) => {
         return (
           <Checkbox
-            onChange={() => updateTaskState(task.id)}
+            onChange={() => updateTaskState(task)}
             label={task.description}
             isChecked={task.finished}
             key={task.id}

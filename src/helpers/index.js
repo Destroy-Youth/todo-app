@@ -1,9 +1,9 @@
 import { firebase } from '../firebase'
 
-export const updateTaskState = (taskId) => {
+export const updateTaskState = (task) => {
   firebase
     .firestore()
     .collection('tasks')
-    .doc(taskId)
-    .update({ finished: true })
+    .doc(task.id)
+    .update({ finished: !task.finished })
 }
