@@ -44,14 +44,12 @@ const CheckboxContainer = styled.div`
 `
 
 function Checkbox({ className, isChecked, onChange, label, ...props }) {
-  const [checked, setChecked] = useState(isChecked ? true : false)
-
   return (
     <div>
       <label>
         <CheckboxContainer className={className}>
-          <HiddenCheckbox checked={checked} {...props} onChange={onChange} />
-          <StyledCheckbox checked={checked}>
+          <HiddenCheckbox checked={isChecked} {...props} onChange={onChange} />
+          <StyledCheckbox checked={isChecked}>
             <Icon viewBox="0 0 24 24">
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
