@@ -1,5 +1,5 @@
 import React from 'react'
-import { useTask } from '../hooks'
+import { useTasks } from '../hooks'
 import Checkbox from './Checkbox'
 import { updateTaskState } from '../helpers'
 import styled from 'styled-components'
@@ -9,7 +9,7 @@ const Container = styled.section`
 `
 
 function Tasks() {
-  const { tasks } = useTask('1')
+  const { tasks } = useTasks('1')
 
   return (
     <Container id="tasks">

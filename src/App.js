@@ -4,6 +4,8 @@ import Header from './components/Header'
 import Tasks from './components/Tasks'
 import styled from 'styled-components'
 import Sidebar from './components/Sidebar'
+import { TodosProvider } from './context/TodosContext'
+import { SelectedTodoProvider } from './context/SelectedTodoContext'
 
 const Main = styled.section`
   display: grid;
@@ -18,14 +20,18 @@ const TasksSection = styled.section`
 function App() {
   return (
     <div>
-      <Header />
-      <Main>
-        <Sidebar />
-        <div />
-        <TasksSection>
-          <Tasks />
-        </TasksSection>
-      </Main>
+      <SelectedTodoProvider>
+        <TodosProvider>
+          <Header />
+          <Main>
+            <Sidebar />
+            <div />
+            <TasksSection>
+              <Tasks />
+            </TasksSection>
+          </Main>
+        </TodosProvider>
+      </SelectedTodoProvider>
     </div>
   )
 }

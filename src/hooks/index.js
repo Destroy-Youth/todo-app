@@ -1,7 +1,7 @@
 import { firebase } from '../firebase'
 import { useState, useEffect } from 'react'
 
-export const useTask = (selectedTodo) => {
+export const useTasks = (selectedTodo) => {
   const [tasks, setTasks] = useState([])
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export const useTask = (selectedTodo) => {
   return { tasks }
 }
 
-export const useTodo = (userId) => {
+export const useTodos = (userId) => {
   const [todos, setTodos] = useState([])
 
   useEffect(() => {

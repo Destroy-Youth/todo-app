@@ -1,6 +1,7 @@
 import React from 'react'
-import { useTodo } from '../hooks'
+import { useTodos } from '../hooks'
 import styled from 'styled-components'
+import { useSelectedTodoValue } from './../context/Index'
 
 const NoSelectSpan = styled.span`
   cursor: pointer;
@@ -20,7 +21,9 @@ const H2 = styled.h2`
 `
 
 function Todos() {
-  const { todos } = useTodo('1')
+  const { selectedTodo, setSelectedTodo } = useSelectedTodoValue()
+
+  const { todos } = useTodos('1')
 
   return (
     <div>
