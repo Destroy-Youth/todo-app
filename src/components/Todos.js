@@ -12,13 +12,19 @@ const NoSelectSpan = styled.span`
   }
 `
 
-const Li = styled.li``
+const H2 = styled.h2`
+  border-bottom: 1px solid rgb(0, 0, 0);
+  margin-left: 0.3rem;
+  margin-right: 1rem;
+  font-size: 2rem;
+`
 
 function Todos() {
   const { todos } = useTodo('1')
 
   return (
     <div>
+      <H2>Todos</H2>
       {todos.map((todo) => {
         return (
           <ul>

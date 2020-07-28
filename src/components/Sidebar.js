@@ -4,7 +4,7 @@ import Todos from './Todos'
 import Colors from './../constants/Colors'
 
 const Container = styled.section`
-  background-color: #0000;
+  background-color: ${Colors.primaryShadow};
   height: 100%;
   width: calc(100vw / 5);
   padding-top: 75px;
