@@ -43,6 +43,11 @@ const CheckboxContainer = styled.div`
   vertical-align: middle;
 `
 
+const NoSelectSpan = styled.span`
+  cursor: pointer;
+  user-select: none;
+`
+
 function Checkbox({ className, isChecked, onChange, label, ...props }) {
   return (
     <div>
@@ -56,7 +61,7 @@ function Checkbox({ className, isChecked, onChange, label, ...props }) {
             </Icon>
           </StyledCheckbox>
         </CheckboxContainer>
-        <span style={{ marginLeft: '0.4rem' }}>{label}</span>
+        <NoSelectSpan style={{ marginLeft: '0.4rem' }}>{label}</NoSelectSpan>
       </label>
     </div>
   )

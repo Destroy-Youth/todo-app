@@ -2,12 +2,17 @@ import React from 'react'
 import { useTask } from '../hooks'
 import Checkbox from './Checkbox'
 import { updateTaskState } from '../helpers'
+import styled from 'styled-components'
+
+const Container = styled.section`
+  margin-left: 1rem;
+`
 
 function Tasks() {
   const { tasks } = useTask('1')
 
   return (
-    <div>
+    <Container id="tasks">
       {tasks.map((task) => {
         return (
           <Checkbox
@@ -18,7 +23,7 @@ function Tasks() {
           />
         )
       })}
-    </div>
+    </Container>
   )
 }
 
