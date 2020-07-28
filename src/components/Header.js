@@ -9,8 +9,9 @@ const Bar = styled.section`
   -webkit-box-shadow: 0px 8px 22px -7px rgba(0, 0, 0, 0.69);
   -moz-box-shadow: 0px 8px 22px -7px rgba(0, 0, 0, 0.69);
   box-shadow: 0px 8px 22px -7px rgba(0, 0, 0, 0.69);
-  display: flex;
-  align-items: center;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
 `
 
 const Icon = styled.svg`
@@ -22,16 +23,19 @@ const Icon = styled.svg`
   background-color: white;
   border-radius: 50px;
   margin-left: 1rem;
+  margin-top: 0.5rem;
+
+  display: flex;
+  align-items: center;
+
+  grid-column: 1;
 `
 const Title = styled.div`
   font-size: 2rem;
   font-family: Garamond, Baskerville, 'Baskerville Old Face';
   color: white;
-  position: absolute !important;
-  left: 25%;
-  right: 25%;
-  top: 1%;
-  flex-wrap: nowrap;
+  margin-top: 0.5rem;
+  grid-column: 2;
 `
 
 function Header() {
