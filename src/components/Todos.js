@@ -5,7 +5,14 @@ import styled from 'styled-components'
 const NoSelectSpan = styled.span`
   cursor: pointer;
   user-select: none;
+
+  &:hover {
+    border-radius: 3px;
+    background-color: rgb(255, 255, 255, 0.2);
+  }
 `
+
+const Li = styled.li``
 
 function Todos() {
   const { todos } = useTodo('1')

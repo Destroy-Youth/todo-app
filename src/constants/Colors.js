@@ -3,4 +3,5 @@ export default {
   secundary: '#f7b538',
   buttonPrimary: '#3f84e5',
   buttonSecundary: '#C52233',
+  primaryShadow: '#fffae6',
 }
